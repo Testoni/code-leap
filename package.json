@@ -2,13 +2,21 @@
   "name": "code-leap",
   "version": "0.1.0",
   "private": true,
+  "author": "Gabriel Testoni",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "classnames": "^2.2.6",
+    "react-router-dom": "^5.1.2",
+    "js-cookie": "^2.2.1",
+    "react-scripts": "3.4.1",
+    "redux": "^3.6.0",
+    "react-redux": "^5.0.2",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
