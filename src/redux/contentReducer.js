@@ -7,7 +7,7 @@ export default (state = INITIAL_STATE, action) => {
         case 'CONTENT_CHANGED':
             return { ...state, content: action.payload}
         case 'CONTENT_SEARCHED':
-            return { ...state, list: action.payload }
+            return { ...state, list: action.payload.results }
         case 'CONTENT_CLEAR':
             return { ...state, title: '', content: '' }
         default:

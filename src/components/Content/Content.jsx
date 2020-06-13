@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { save, changeTitle, changeContent, search, remove } from '../../actions/ContentActions'
+import { save, changeTitle, changeContent, search } from '../../actions/ContentActions'
+import ContentList from '../../components/ContentList/ContentList'
 
 import './Content.css'
 
@@ -31,6 +32,8 @@ class Content extends Component {
 
                         <button className='button' type='submit' onClick={() => save(title, content)}>CREATE</button>
                     </div>
+
+                    <ContentList />
                 </form>
             </div>
         )
