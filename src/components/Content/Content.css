@@ -1,0 +1,30 @@
+.post-body {
+    width: 100%;
+    max-width: 900px;
+    height: 93vh;
+    margin: 0 auto;
+    align-items: center;
+    background-color: white;
+}
+
+.panel-creator {
+    background-color: white;
+    margin: 30px;
+    max-width: 840px;
+    padding: 20px;
+    border: solid 2px #d3d3d5;
+    width: 100%;
+    position: absolute;
+}
+
+.panel-creator h1 {
+    margin-bottom: 25px;
+}
+
+.panel-creator span {
+    margin-top: 25px;
+}
+
+.panel-creator input {
+    margin-bottom: 10px;
+}

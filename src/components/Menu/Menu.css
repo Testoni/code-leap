@@ -1,0 +1,21 @@
+.post-container {
+    color: white;
+    background-color: black;
+    padding: 13px;
+    font-weight: 600;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.post-container header {
+    display: flex;
+    align-items: center;
+}
+
+.post-container span {
+    font-size: 20px;
+    margin-left: 24px;
+}
