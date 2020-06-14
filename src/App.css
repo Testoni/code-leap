@@ -36,6 +36,7 @@ form textarea {
     border: 1px solid #dcdce6;
     padding: 0 8px;
     margin-top: 4px;
+    resize: none;
 }
 
 .button {
@@ -53,6 +54,21 @@ form textarea {
     transition: filter 0.2s;
 }
 
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
 .button:hover {
     filter: brightness(40%);
+}
+
+.icon-header {
+    float: right;
+    margin-left: 12px;
+    font-size: 17px;
+    cursor: pointer;
 }

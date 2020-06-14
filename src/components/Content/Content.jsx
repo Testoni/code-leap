@@ -16,7 +16,8 @@ class Content extends Component {
     }
 
     render() {
-        const { save, title, content } = this.props
+        const { save, title, content, changeTitle, changeContent } = this.props
+        const enabled = title.length > 0 && content.length > 0;
 
         return (
             <div className='post-body'>
@@ -25,12 +26,12 @@ class Content extends Component {
                         <h1>What's on your mind?</h1>
 
                         <span>Title</span>
-                        <input placeholder='Hello world' id='title' type="text" value={this.props.title} onChange={this.props.changeTitle} />
+                        <input placeholder='Hello world' id='title' type="text" value={title} onChange={changeTitle} />
 
                         <span>Content</span>
-                        <textarea placeholder='Content here' id='content' type="text" value={this.props.content} onChange={this.props.changeContent} />
+                        <textarea placeholder='Content here' id='content' type="text" value={content} onChange={changeContent} />
 
-                        <button className='button' type='submit' onClick={() => save(title, content)}>CREATE</button>
+                        <button disabled={!enabled} className='button' type='submit' onClick={() => save(title, content)}>CREATE</button>
                     </div>
 
                     <ContentList />

@@ -20,13 +20,13 @@ export const search = () => {
 
 export const save = (title, content) => {
     return dispatch => {
-        axios.post(URL, { title, content }).then(resp => dispatch(clear())).then(resp => dispatch(search()))
+        axios.post(URL, { username: 'GABRIEL', title: title, content: content }).then(resp => dispatch(clear())).then(resp => dispatch(search()))
     }
 }
 
 export const remove = (content) => {
     return dispatch => {
-        axios.delete(`${URL}/${content.id}`).then(resp => dispatch(search()))
+        axios.delete(`${URL}${content.id}`).then(resp => dispatch(search()))
     }
 }
 

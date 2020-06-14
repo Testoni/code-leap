@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { FiTrash2 } from 'react-icons/fi'
+import { FaRegEdit } from 'react-icons/fa'
 
 import * as dateUtils from '../../utils/dateUtils'
 import { remove } from '../../actions/ContentActions'
@@ -11,7 +13,11 @@ const ContentList = props => {
         const list = props.list || []
         return list.map(content => (
             <div key={content.id}>
-                <div className="panel-heading">{content.title}</div>
+                <div className="panel-heading">
+                    <span>{content.title}</span>
+                    <span onClick={() => props.remove(content)} className='icon-header'><FaRegEdit /></span>
+                    <span onClick={() => props.openModal(content)} className='icon-header'><FiTrash2 /></span>
+                </div>
                 <div className="panel-body">
                     <span className="label-span">{content.username}</span>
                     <span className="label-span date-time">{dateUtils.formatDate(content.created_datetime)}</span>
