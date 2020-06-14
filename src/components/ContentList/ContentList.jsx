@@ -51,7 +51,7 @@ const ContentList = props => {
         <div className="panel"> 
             {
                 currentContent && 
-                <Modal isActive={open} handleCloseModal={hideModal} widthPx={800}>
+                <Modal isActive={open} handleCloseModal={hideModal} widthPx={800} heightPx={350}>
                     <ModalHeader>
                         <div>
                             <span>Edit Item</span>

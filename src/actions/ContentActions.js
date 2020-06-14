@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://dev.codeleap.co.uk/careers/'
+const URL = 'https://cors-anywhere.herokuapp.com/http://dev.codeleap.co.uk/careers/'
 
 export const changeTitle = value => ({
     type: 'TITLE_CHANGED',
@@ -38,7 +38,7 @@ export const clear = () => {
 
 export const update = content => {
     return dispatch => {
-        axios.put(`${URL}/${content.id}`, { title: content.title, context: content.content})
+        axios.put(`${URL}${content.id}`, { username: content.username, title: content.title, content: content.content})
         .then(_ => dispatch(search()))
     }
 }
