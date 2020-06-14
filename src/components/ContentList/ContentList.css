@@ -1,0 +1,32 @@
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.panel-heading {
+    color: #fff;
+    background-color: #000000;
+    font-weight: 700;
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+.panel-body {
+    padding: 15px;
+    border: 2px solid #d3d3d5;
+}
+
+.label-span {
+    color: #a9a9a9;
+    font-weight: 900;
+}
+
+.date-time {
+    float: right;
+}
+
+.label-text {
+    margin-top: 10px;
+}

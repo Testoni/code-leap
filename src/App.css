@@ -41,7 +41,7 @@ form textarea {
 .button {
     width: 23%;
     height: 41px;
-    background: black;
+    background: #333;
     border: 0;
     color: #FFF;
     font-weight: 700;

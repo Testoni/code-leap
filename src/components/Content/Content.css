@@ -4,17 +4,23 @@
     height: 93vh;
     margin: 0 auto;
     align-items: center;
-    background-color: white;
+    background-color: #fff;
+}
+
+.post-body form {
+    border: solid 1px #333;
+    background-color: #fff;
 }
 
 .panel-creator {
-    background-color: white;
+    background-color: #fff;
     margin: 30px;
+    margin-top: 0;
     max-width: 840px;
     padding: 20px;
     border: solid 2px #d3d3d5;
     width: 100%;
-    position: absolute;
+    margin-top: 30px;
 }
 
 .panel-creator h1 {
