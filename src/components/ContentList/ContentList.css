@@ -30,3 +30,16 @@
 .label-text {
     margin-top: 10px;
 }
+
+.f-right {
+    float: right;
+}
+
+.input-modal {
+    margin-bottom: 15px;
+}
+
+.icon-close {
+    float: right;
+    cursor: pointer;
+}

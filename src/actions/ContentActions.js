@@ -14,22 +14,32 @@ export const changeContent = event => ({
 
 export const search = () => {
     return (dispatch, getState) => {
-        const request = axios.get(`${URL}`).then(resp => dispatch({type: 'CONTENT_SEARCHED', payload: resp.data}))
+        axios.get(`${URL}`).then(resp => dispatch({type: 'CONTENT_SEARCHED', payload: resp.data}))
     }
 }
 
 export const save = (title, content) => {
     return dispatch => {
-        axios.post(URL, { username: 'GABRIEL', title: title, content: content }).then(resp => dispatch(clear())).then(resp => dispatch(search()))
+        axios.post(URL, { username: 'GABRIEL', title, content })
+        .then(_ => dispatch(clear()))
+        .then(_ => dispatch(search()))
     }
 }
 
-export const remove = (content) => {
+export const remove = content => {
     return dispatch => {
-        axios.delete(`${URL}${content.id}`).then(resp => dispatch(search()))
+        //axios.delete(`${URL}${content.id}`).then(_ => dispatch(search()))
+        axios.delete('http://dev.codeleap.co.uk/careers/72')
     }
 }
 
 export const clear = () => {
     return [{ type: 'CONTENT_CLEAR' }, search()]
+}
+
+export const update = content => {
+    return dispatch => {
+        axios.put(`${URL}/${content.id}`, { title: content.title, context: content.content})
+        .then(_ => dispatch(search()))
+    }
 }

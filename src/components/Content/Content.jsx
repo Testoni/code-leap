@@ -15,6 +15,10 @@ class Content extends Component {
         this.props.search()
     }
 
+    componentDidMount() {
+        this.nameInput.focus();
+    }
+
     render() {
         const { save, title, content, changeTitle, changeContent } = this.props
         const enabled = title.length > 0 && content.length > 0;
@@ -26,7 +30,7 @@ class Content extends Component {
                         <h1>What's on your mind?</h1>
 
                         <span>Title</span>
-                        <input placeholder='Hello world' id='title' type="text" value={title} onChange={changeTitle} />
+                        <input ref={(input) => { this.nameInput = input; }} placeholder='Hello world' id='title' type="text" value={title} onChange={changeTitle} />
 
                         <span>Content</span>
                         <textarea placeholder='Content here' id='content' type="text" value={content} onChange={changeContent} />
