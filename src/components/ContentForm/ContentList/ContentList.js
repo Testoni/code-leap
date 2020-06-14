@@ -5,37 +5,49 @@ import { FiTrash2 } from 'react-icons/fi'
 import { FaRegEdit } from 'react-icons/fa'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 
-import * as dateUtils from '../../utils/dateUtils'
-import { remove, update } from '../../actions/ContentActions'
-import If from '../../components/If/If'
-import Modal from '../../components/Modal/Modal'
-import ModalHeader from '../../components/Modal/modal-header'
-import ModalContent from '../../components/Modal/modal-content'
+import * as dateUtils from '../../../utils/dateUtils'
+import { remove, update } from '../../../actions/ContentActions'
+import If from '../../If/If'
+import Modal from '../../Modal/Modal'
+import ModalHeader from '../../Modal/modal-header'
+import ModalContent from '../../Modal/modal-content'
+import Confirmation from '../../Confirmation/Confirmation'
 
 import './ContentList.css'
 
 const ContentList = props => {
-    const [open, setOpen] = useState(false)
+    const [ativeModal, setAtiveModal] = useState(false)
+    const [ativeConfirmation, setAtiveConfirmation] = useState(false)
     const [currentContent, setCurrentContent] = useState(null)
 
-    function showModal(content) {
+    const showModal = content => {
         setCurrentContent(content)
-        setOpen(true)
+        setAtiveModal(true)
     }
 
-    function hideModal() {
-        setOpen(false)
+    const hideModal = _ => {
+        setAtiveModal(false)
+    }
+
+    const showConfirmation = content => {
+        setCurrentContent(content)
+        setAtiveConfirmation(true)
+    }
+
+    const hideConfirmation = _ => {
+        setAtiveConfirmation(false)
     }
 
     const renderList = () => {
         const list = props.list || []
+
         return list.map(content => (
             <div key={content.id}>
                 <div className="panel-heading">
                     <span>{content.title}</span>
                     <If username={content.username}>
-                        <span onClick={() => showModal(content)} className='icon-header'><FaRegEdit /></span>
-                        <span onClick={() => props.remove(content)} className='icon-header'><FiTrash2 /></span>
+                        <span title='Edit' onClick={() => showModal(content)} className='icon-header'><FaRegEdit /></span>
+                        <span title='Remove' onClick={() => showConfirmation(content)} className='icon-header'><FiTrash2 /></span>
                     </If>
                 </div>
                 <div className="panel-body">
@@ -47,11 +59,13 @@ const ContentList = props => {
         ))
     }
 
+    const enabled = currentContent => (currentContent.title.length > 0 && currentContent.content.length > 0)
+
     return (
         <div className="panel"> 
             {
                 currentContent && 
-                <Modal isActive={open} handleCloseModal={hideModal} widthPx={800} heightPx={350}>
+                <Modal isActive={ativeModal} handleCloseModal={hideModal} widthPx={800} heightPx={350}>
                     <ModalHeader>
                         <div>
                             <span>Edit Item</span>
@@ -65,9 +79,13 @@ const ContentList = props => {
                         <span>Content</span>
                         <textarea id='content' type="text" value={currentContent.content} onChange={e => setCurrentContent({...currentContent, content: e.target.value})} />
     
-                        <button onClick={() => props.update(currentContent)} className='button f-right' type='submit'>SAVE</button>
+                        <button disabled={!enabled(currentContent)} onClick={() => props.update(currentContent)} className='button f-right' type='submit'>SAVE</button>
                     </ModalContent>
                 </Modal>
+            }
+            {
+                currentContent && 
+                <Confirmation message='Are you sure you want to delete this item?' isActive={ativeConfirmation} handleClose={hideConfirmation} handleConfirmation={() => props.remove(currentContent)} />
             }
 
             {renderList()}

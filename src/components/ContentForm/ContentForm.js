@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { save, changeTitle, changeContent, search } from '../../actions/ContentActions'
-import ContentList from '../../components/ContentList/ContentList'
+import ContentList from './ContentList/ContentList'
 import useStorage from '../../utils/useStorage'
 
-import './Content.css'
+import './ContentForm.css'
 
 const Content = ({ search, save, title, content, changeTitle, changeContent }) => {
     const [nameInput, setNameInput] = useState(null)

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom'
-import StoreContext from '../../components/Store/Context'
+import StoreContext from '../Store/Context'
 import './Login.css';
 
 function initialState() {

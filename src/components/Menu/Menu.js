@@ -16,11 +16,10 @@ const Menu = () => {
 
     return (
         <div className='post-container'>
-            <header>
-                <span>CodeLeap Network</span>
-                <span onClick={() => logoff()} className='icon-header'><IoMdExit /></span>
-                <span>{token}</span>
-            </header>
+            <span>CodeLeap Network</span>
+            <span title='Logout' onClick={() => logoff()} className='icon-header'>
+                <IoMdExit />
+            </span>
         </div>
     )
 }

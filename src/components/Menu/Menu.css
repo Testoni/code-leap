@@ -1,12 +1,11 @@
 .post-container {
-    color: white;
+    color:  #FFF;
     background-color: #333;
     padding: 13px;
     font-weight: 600;
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    display: flex;
     align-items: center;
 }
 
@@ -18,4 +17,8 @@
 .post-container span {
     font-size: 20px;
     margin-left: 24px;
+}
+
+.icon-header {
+    float: right;
 }

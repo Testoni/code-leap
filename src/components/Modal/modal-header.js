@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ModalHeader = ({ children }) => (
-  <div className='ll-modal-header'>
+  <div className='modal-header'>
     {children}
   </div>
 )

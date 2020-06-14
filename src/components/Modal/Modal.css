@@ -1,4 +1,4 @@
-.ll-modal {
+.modal {
   align-items: center;
   display: none;
   flex-direction: column;
@@ -8,23 +8,23 @@
   z-index: 100;
 }
 
-.ll-modal.is-active {
+.modal.is-active {
   display: flex;
 }
 
-.ll-modal-background {
+.modal-background {
   background-color: rgba(10,10,10,.5);
   position: absolute;
 }
 
-.ll-modal-background, .ll-modal{
+.modal-background, .modal{
   bottom: 0;
   left: 0;
   right: 0;
   top: 0;
 }
 
-.ll-modal-container {
+.modal-container {
   max-height: 95%;
   z-index: 110;
   margin: 0 auto;
@@ -32,21 +32,21 @@
   border-radius: 4px;
 }
 
-.ll-modal-header {
+.modal-header {
   background-color: #FFF;
-    color: black;
-    font-size: 21px;
-    padding: 20px;
-    font-weight: 700;
+  color: #333;
+  font-size: 21px;
+  padding: 20px;
+  font-weight: 700;
 }
 
-.ll-modal-content {
-  background-color: whitesmoke;
+.modal-content {
+  background-color: #FFF;
 }
 
-.ll-modal-content {
+.modal-content {
   overflow: auto;
-    position: relative;
-    color: black;
-    padding: 20px;
+  position: relative;
+  color: #333;
+  padding: 20px;
 }

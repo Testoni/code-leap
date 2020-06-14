@@ -10,12 +10,9 @@ const Modal = ({
   widthPx,
   heightPx
 }) => (
-  <div className={`ll-modal ${isActive ? 'is-active' : ''}`}>
-    {
-      // toggleHtml(isActive)
-    }
-    <div className='ll-modal-background' onClick={() => onCloseModal(handleCloseModal)} />
-    <div style={{ width: `${widthPx}px`, height: `${heightPx}px` }} className='ll-modal-container'>
+  <div className={`modal ${isActive ? 'is-active' : ''}`}>
+    <div className='modal-background' onClick={() => onCloseModal(handleCloseModal)} />
+    <div style={{ width: `${widthPx}px`, height: `${heightPx}px` }} className='modal-container'>
       {children}
     </div>
   </div>
