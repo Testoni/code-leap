@@ -1,48 +1,45 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { save, changeTitle, changeContent, search } from '../../actions/ContentActions'
 import ContentList from '../../components/ContentList/ContentList'
+import useStorage from '../../utils/useStorage'
 
 import './Content.css'
 
-class Content extends Component {
-    constructor(props) {
-        super(props)
-    }
+const Content = ({ search, save, title, content, changeTitle, changeContent }) => {
+    const [nameInput, setNameInput] = useState(null)
+    const [token, setToken] = useStorage('token')
 
-    componentWillMount() {
-        this.props.search()
-    }
+    useEffect(() => {
+        search()
+    }, [])
 
-    componentDidMount() {
-        this.nameInput.focus();
-    }
+    useEffect(() => {
+        nameInput && nameInput.focus();
+    }, [nameInput])
+    
+    const enabled = title.length > 0 && content.length > 0;
 
-    render() {
-        const { save, title, content, changeTitle, changeContent } = this.props
-        const enabled = title.length > 0 && content.length > 0;
+    return (
+        <div className='post-body'>
+            <form>
+                <div className='panel-creator'>
+                    <h1>What's on your mind?</h1>
 
-        return (
-            <div className='post-body'>
-                <form>
-                    <div className='panel-creator'>
-                        <h1>What's on your mind?</h1>
+                    <span>Title</span>
+                    <input ref={input => setNameInput(input) } placeholder='Hello world' id='title' type="text" value={title} onChange={e => changeTitle(e.target.value)} />
 
-                        <span>Title</span>
-                        <input ref={(input) => { this.nameInput = input; }} placeholder='Hello world' id='title' type="text" value={title} onChange={changeTitle} />
+                    <span>Content</span>
+                    <textarea placeholder='Content here' id='content' type="text" value={content} onChange={changeContent} />
 
-                        <span>Content</span>
-                        <textarea placeholder='Content here' id='content' type="text" value={content} onChange={changeContent} />
+                    <button disabled={!enabled} className='button' type='submit' onClick={() => save(token, title, content)}>CREATE</button>
+                </div>
 
-                        <button disabled={!enabled} className='button' type='submit' onClick={() => save(title, content)}>CREATE</button>
-                    </div>
-
-                    <ContentList />
-                </form>
-            </div>
-        )
-    }
+                <ContentList />
+            </form>
+        </div>
+    )
 }
 
 const mapStateToProps = state => ({title: state.content.title, content: state.content.content})

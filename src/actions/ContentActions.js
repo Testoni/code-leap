@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const URL = 'http://dev.codeleap.co.uk/careers/'
 
-export const changeTitle = event => ({
+export const changeTitle = value => ({
     type: 'TITLE_CHANGED',
-    payload: event.target.value
+    payload: value
 })
 
 export const changeContent = event => ({
@@ -18,9 +18,9 @@ export const search = () => {
     }
 }
 
-export const save = (title, content) => {
+export const save = (token, title, content) => {
     return dispatch => {
-        axios.post(URL, { username: 'GABRIEL', title, content })
+        axios.post(URL, { username: token, title, content })
         .then(_ => dispatch(clear()))
         .then(_ => dispatch(search()))
     }
@@ -28,8 +28,7 @@ export const save = (title, content) => {
 
 export const remove = content => {
     return dispatch => {
-        //axios.delete(`${URL}${content.id}`).then(_ => dispatch(search()))
-        axios.delete('http://dev.codeleap.co.uk/careers/72')
+        axios.delete(`${URL}${content.id}`).then(_ => dispatch(search()))
     }
 }
 

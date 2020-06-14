@@ -16,8 +16,10 @@ import './ContentList.css'
 
 const ContentList = props => {
     const [open, setOpen] = useState(false)
+    const [currentContent, setCurrentContent] = useState(null)
 
-    function showModal() {
+    function showModal(content) {
+        setCurrentContent(content)
         setOpen(true)
     }
 
@@ -31,28 +33,9 @@ const ContentList = props => {
             <div key={content.id}>
                 <div className="panel-heading">
                     <span>{content.title}</span>
-
                     <If username={content.username}>
-                        <span onClick={showModal} className='icon-header'><FaRegEdit /></span>
+                        <span onClick={() => showModal(content)} className='icon-header'><FaRegEdit /></span>
                         <span onClick={() => props.remove(content)} className='icon-header'><FiTrash2 /></span>
-                        
-                        <Modal isActive={open} handleCloseModal={hideModal} widthPx={800}>
-                            <ModalHeader>
-                                <div>
-                                    <span>Edit Item</span>
-                                    <span onClick={hideModal} className='icon-close'><AiOutlineCloseCircle /></span>
-                                </div>
-                            </ModalHeader>
-                            <ModalContent>
-                                <span>Title</span>
-                                <input className='input-modal' id='title' type="text" value={content.title} />
-
-                                <span>Content</span>
-                                <textarea id='content' type="text" value={content.content} />
-
-                                <button onClick={() => props.update(content)} className='button f-right' type='submit'>SAVE</button>
-                            </ModalContent>
-                        </Modal>
                     </If>
                 </div>
                 <div className="panel-body">
@@ -65,7 +48,28 @@ const ContentList = props => {
     }
 
     return (
-        <div className="panel">
+        <div className="panel"> 
+            {
+                currentContent && 
+                <Modal isActive={open} handleCloseModal={hideModal} widthPx={800}>
+                    <ModalHeader>
+                        <div>
+                            <span>Edit Item</span>
+                            <span onClick={hideModal} className='icon-close'><AiOutlineCloseCircle /></span>
+                        </div>
+                    </ModalHeader>
+                    <ModalContent>
+                        <span>Title</span>
+                        <input className='input-modal' id='title' type="text" value={currentContent.title} onChange={e => setCurrentContent({...currentContent, title: e.target.value})} />
+    
+                        <span>Content</span>
+                        <textarea id='content' type="text" value={currentContent.content} onChange={e => setCurrentContent({...currentContent, content: e.target.value})} />
+    
+                        <button onClick={() => props.update(currentContent)} className='button f-right' type='submit'>SAVE</button>
+                    </ModalContent>
+                </Modal>
+            }
+
             {renderList()}
         </div>
     )

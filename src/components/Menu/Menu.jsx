@@ -19,6 +19,7 @@ const Menu = () => {
             <header>
                 <span>CodeLeap Network</span>
                 <span onClick={() => logoff()} className='icon-header'><IoMdExit /></span>
+                <span>{token}</span>
             </header>
         </div>
     )
