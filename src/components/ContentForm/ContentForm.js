@@ -10,6 +10,7 @@ import './ContentForm.css'
 const Content = ({ search, save, title, content, changeTitle, changeContent }) => {
     const [nameInput, setNameInput] = useState(null)
     const [token, setToken] = useStorage('token')
+    const [currentContent, setCurrentContent] = useState(null)
 
     useEffect(() => {
         search()

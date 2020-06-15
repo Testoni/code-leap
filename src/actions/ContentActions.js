@@ -7,7 +7,7 @@ import {
     CONTENT_CLEAR
 } from './actionTypes'
 
-const URL = 'https://cors-anywhere.herokuapp.com/http://dev.codeleap.co.uk/careers/'
+const URL = '/careers'
 
 export const changeTitle = value => ({
     type: TITLE_CHANGED,
@@ -37,7 +37,7 @@ export const save = (token, title, content) => {
 export const remove = content => {
 
     return dispatch => {
-        axios.delete(`${URL}${content.id}`).then(_ => dispatch(search()))
+        axios.delete(`${URL}/${content.id}`).then(_ => dispatch(search()))
     }
 }
 
