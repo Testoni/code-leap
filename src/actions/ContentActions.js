@@ -26,13 +26,16 @@ export const search = () => {
 }
 
 export const save = (token, title, content) => {
+
     return dispatch => {
         axios.post(URL, { username: token, title, content })
         .then(_ => dispatch(clear()))
+        .then(_ => dispatch(search()))
     }
 }
 
 export const remove = content => {
+
     return dispatch => {
         axios.delete(`${URL}${content.id}`).then(_ => dispatch(search()))
     }
