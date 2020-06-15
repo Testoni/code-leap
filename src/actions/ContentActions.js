@@ -28,7 +28,7 @@ export const search = () => {
 export const save = (token, title, content) => {
 
     return dispatch => {
-        axios.post(URL, { username: token, title, content })
+        axios.post(`${URL}/`, { username: token, title, content })
         .then(_ => dispatch(clear()))
         .then(_ => dispatch(search()))
     }
@@ -37,7 +37,7 @@ export const save = (token, title, content) => {
 export const remove = content => {
 
     return dispatch => {
-        axios.delete(`${URL}/${content.id}`).then(_ => dispatch(search()))
+        axios.delete(`${URL}/${content.id}/`).then(_ => dispatch(search()))
     }
 }
 
@@ -47,6 +47,6 @@ export const clear = () => {
 
 export const update = content => {
     return dispatch => {
-        axios.put(`${URL}${content.id}`, { username: content.username, title: content.title, content: content.content}).then(_ => dispatch(search()))
+        axios.put(`${URL}/${content.id}/`, { username: content.username, title: content.title, content: content.content}).then(_ => dispatch(search()))
     }
 }
