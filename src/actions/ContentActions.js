@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../utils/request'
 
 import {
     TITLE_CHANGED,
@@ -26,7 +26,6 @@ export const search = () => {
 }
 
 export const save = (token, title, content) => {
-
     return dispatch => {
         axios.post(`${URL}/`, { username: token, title, content })
         .then(_ => dispatch(clear()))
@@ -35,7 +34,6 @@ export const save = (token, title, content) => {
 }
 
 export const remove = content => {
-
     return dispatch => {
         axios.delete(`${URL}/${content.id}/`).then(_ => dispatch(search()))
     }

@@ -1,0 +1,11 @@
+textarea {
+    width: 100%;
+    min-height: 140px;
+    height: 33px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    padding: 0 8px;
+    margin-top: 4px;
+    resize: none;
+    font: 400 18px sans-serif;
+}

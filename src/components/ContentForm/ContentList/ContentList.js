@@ -12,6 +12,8 @@ import Modal from '../../Modal/Modal'
 import ModalHeader from '../../Modal/modal-header'
 import ModalContent from '../../Modal/modal-content'
 import Confirmation from '../../Confirmation/Confirmation'
+import Input from '../../../components/Input/Input'
+import Textarea from '../../../components/Textarea/Textarea'
 
 import './ContentList.css'
 
@@ -74,18 +76,17 @@ const ContentList = props => {
                     </ModalHeader>
                     <ModalContent>
                         <span>Title</span>
-                        <input className='input-modal' id='title' type="text" value={currentContent.title} onChange={e => setCurrentContent({...currentContent, title: e.target.value})} />
+                        <Input className='input-modal' id='title' type="text" value={currentContent.title} onChange={e => setCurrentContent({...currentContent, title: e.target.value})} />
     
                         <span>Content</span>
-                        <textarea id='content' type="text" value={currentContent.content} onChange={e => setCurrentContent({...currentContent, content: e.target.value})} />
+                        <Textarea id='content' type="text" value={currentContent.content} onChange={e => setCurrentContent({...currentContent, content: e.target.value})} />
     
                         <button disabled={!enabled(currentContent)} onClick={() => props.update(currentContent)} className='button f-right' type='submit'>SAVE</button>
                     </ModalContent>
                 </Modal>
             }
             {
-                currentContent && 
-                <Confirmation message='Are you sure you want to delete this item?' isActive={ativeConfirmation} handleClose={hideConfirmation} handleConfirmation={() => props.remove(currentContent)} />
+                currentContent && <Confirmation message='Are you sure you want to delete this item?' isActive={ativeConfirmation} handleClose={hideConfirmation} handleConfirmation={() => props.remove(currentContent)} />
             }
 
             {renderList()}

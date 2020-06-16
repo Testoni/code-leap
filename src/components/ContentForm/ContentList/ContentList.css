@@ -43,3 +43,10 @@
     float: right;
     cursor: pointer;
 }
+
+.icon-header {
+    float: right;
+    margin-left: 12px;
+    font-size: 17px;
+    cursor: pointer;
+}
