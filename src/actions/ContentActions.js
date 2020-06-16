@@ -7,7 +7,7 @@ import {
     CONTENT_CLEAR
 } from './actionTypes'
 
-const URL = '/careers'
+const URL = 'https://dev.codeleap.co.uk/careers'
 
 export const changeTitle = value => ({
     type: TITLE_CHANGED,
@@ -21,7 +21,7 @@ export const changeContent = event => ({
 
 export const search = () => {
     return (dispatch, getState) => {
-        axios.get(`${URL}?sort=-created_datetime`).then(resp => dispatch({type: CONTENT_SEARCHED, payload: resp.data}))
+        axios.get(`${URL}/`).then(resp => dispatch({type: CONTENT_SEARCHED, payload: resp.data}))
     }
 }
 
